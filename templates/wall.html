@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <container>
+        <div class="col-md-6">
+            <h2>Welcome to the big, beautiful Wall {{ context.user.name }}!</h2>
+            <a href="/logout">Logout.</a>
+            <div>
+                <h2>Here are your messages</h2>
+                <ul>
+                    {% for message in context.messages %}
+                        <li>
+                            <span>{{message.first_name}} said </span> 
+                            <p>{{message.message}}</p>
+                            <form action="/delete/message" method="POST">
+                                <input type="hidden" name="msg_id" value="{{message.message_id}}">
+                                <p>{{message.message_id}}</p>
+                                <input type="submit" value="Delete Messages!">
+                            </form>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <table class="table table-bordered table-dark">
+            <tr>
+                <th>Full Name</th>
+                <th>Event</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Join</th>
+                <th>Actions</th>
+            </tr>
+            {% for user in context.users %}
+            <tr>
+                <td>{{user['first_name'] +' '+ user['last_name']}}</td>
+                <td>{{user['Messages']}}</td>
+                <td>{{user['first_name'] +' '+ user['last_name']}}</td>
+                <td>{{user['first_name'] +' '+ user['last_name']}}</td>
+                <td>{{user['first_name'] +' '+ user['last_name']}}</td>
+                <td><a href="/edit">Edit</a> | <a href="/myevents">View</a> </td>
+            </tr>
+        {% endfor %}
+        </table>
+        <!-- <div class="col-md-6"> -->
+            <div>
+                <h4>
+                    Send a message!
+                </h4>
+                {% for u in context.users %}
+                <form action="/message" method="POST">
+                    <input type="hidden" name="recipient_id" value="{{ u.user_id }}">
+                    <input type="hidden" name="sender_id" value="{{ context.user.id }}">
+                    <input type="text" name="message" placeholder="send a message to {{u.first_name}}">
+                    <input type="submit" value="Message Someone">
+                </form>
+                {% endfor %}
+            </div>
+        </div>
+    </container>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Login & Registration</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the website</h1>
+        {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+            {% if messages %}                            <!-- check if there are any messages -->
+                {% for message in messages %}            <!-- loop through the messages -->
+                    <p style="color:red">{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <div class="row">
+            <div class="col-md-6">
+                <!-- <form action="/register" method="POST" style="display: inline-block"> -->
+                    <h1>Registration</h1>
+                    <form action="/register" method="POST" style="display: inline-block">
+                    <div class="form-group">
+                        <label for="fname">First Name :</label>
+                        <input type="text" class="form-horizontal" class="form-control" name="first_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="lname">Last Name :</label>
+                        <input type="text" class="form-horizontal" class="form-control" name="last_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="alias">Username/Alias :</label>
+                        <input type="text" class="form-horizontal" class="form-control" name="alias">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email :</label>
+                        <input type="text" class="form-horizontal" class="form-control" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="pw">Password :</label>
+                        <input type="password" class="form-horizontal" class="form-control" name="password">
+                    </div>
+                    <div class="form-group">
+                        <label for="pw">Confirm Password :</label>
+                        <input type="password" class="form-horizontal" class="form-control" name="confirm_password">
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">Date of Birth :</label>
+                        <input type="date" class="form-horizontal" class="form-control" name="dob">
+                    </div>
+                    <input type="submit" value="Register">
+                </form>
+            </div>
+            <div class="col-md-6">
+                <!-- <form action="/login" method="POST" style="display: inline-block"> -->
+                    <h1>Login</h1>
+                    <form action="/login" method="POST">
+                    <form action="/login" div class="form-group" method="POST">
+                        <label for="email">Email :</label>
+                        <input type="text" class="form-horizontal" class="form-control" name="email" placeholder="Email">
+                        <div>
+                        <label for="alias">Alias :</label>
+                        <input type="text" class="form-horizontal" class="form-control" name="alias" placeholder="alias">
+                        <div>
+                        <label for="pw">Password :</label>
+                        <input type="password" class="form-horizontal" class="form-control" name="password" placeholder="Password">
+                        </div>
+                        <input type="submit" value="Login"> {%}
+                    <div class="form-group"> 
+                        <!-- <label for="pw">Password</label> -->
+                    </div>
+                    <!-- <input type="submit" value="Login"> -->
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+</head>
+
+
+<!-- <body>
+    <h1>The Title. </h1>
+    <div>
+        <h3>Login:</h3>
+        <form action="/login" method="POST">
+            <input type="text" name="email" placeholder="Email">
+            <input type="password" name="password" placeholder="Password">
+            <input type="submit" value="Login">
+        </form>
+    </div>
+    <div>
+        {% with messages = get_flashed_messages() %}      
+            {% if messages %}                           
+                 {% for message in messages %}            
+                    <p>{{message}}</p>                   
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <h3>Register:</h3>
+        <form action="/register" method="POST">
+            <input type="text" name="first_name" placeholder="First Name">
+            <input type="text" name="last_name" placeholder="Last Name">
+            <input type="text" name="email" placeholder="Email" >
+            <input type="password" name="password" placeholder="Password">
+            <input type="password" name="confirm_password" placeholder="Confirm Password">
+            <input type="submit" value="Register">
+        </form>
+    </div>
+</body> -->
